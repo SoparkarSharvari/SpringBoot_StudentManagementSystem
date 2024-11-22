@@ -58,8 +58,8 @@ java -jar target/student-management-0.0.1-SNAPSHOT.jar
 1. **Checkout Code**: Jenkins will fetch the latest code from the GitHub repository.
 2. **Build Code**: Maven is used to build the project.
 3. **Deploy to AWS**:
-   4. Upload the JAR file to an EC2 instance.
-   5. Start the application using `java -jar`.
+>4. Upload the JAR file to an EC2 instance.
+>5. Start the application using `java -jar`.
 
 ### Jenkinsfile
 The Jenkins pipeline script (`Jenkinsfile`) is included in the project.
