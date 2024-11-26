@@ -18,7 +18,6 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     public User registerUser(User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new DuplicateEmailException("Email already in use!");
