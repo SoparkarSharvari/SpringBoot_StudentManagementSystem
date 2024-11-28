@@ -1,0 +1,44 @@
+pipeline {
+    tools{
+        maven "newmaven"
+    }
+    agent any
+
+    environment {
+        GITHUB_REPO_URL = 'https://github.com/SoparkarSharvari/SpringBoot_StudentManagementSystem.git'  // GitHub repository URL
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Checkout code from GitHub
+                git url: "${GITHUB_REPO_URL}", branch: 'main'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run Maven or Gradle build commands to build the project and package it as a JAR
+                script {
+                    sh 'mvn clean install -DskipTests' // Use Maven, adjust for Gradle if necessary
+                }
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                // Deploy steps go here (e.g., copying files to a local server, restarting services, etc.)
+                echo 'Deployment steps go here'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and deployment successful!'
+        }
+        failure {
+            echo 'Build or deployment failed!'
+        }
+    }
+}
